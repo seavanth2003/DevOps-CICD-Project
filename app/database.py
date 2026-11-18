@@ -1,3 +1,4 @@
+
 import sqlite3
 import os
 from pathlib import Path
@@ -22,6 +23,7 @@ def get_db_connection():
 def init_db():
     connection = get_db_connection()
 
+    # Employee table
     connection.execute("""
         CREATE TABLE IF NOT EXISTS employees (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -29,6 +31,17 @@ def init_db():
             email TEXT UNIQUE NOT NULL,
             department TEXT NOT NULL,
             salary REAL NOT NULL
+        )
+    """)
+
+    # User authentication table
+    connection.execute("""
+        CREATE TABLE IF NOT EXISTS users (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            email TEXT UNIQUE NOT NULL,
+            password_hash TEXT NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )
     """)
 
