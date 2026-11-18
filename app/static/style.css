@@ -1,0 +1,23 @@
+body {
+    background: #f1f5f9;
+    font-family: Arial, sans-serif;
+}
+
+.navbar {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+    color: #1e293b;
+    font-weight: 700;
+}
+
+.btn {
+    border-radius: 6px;
+}
