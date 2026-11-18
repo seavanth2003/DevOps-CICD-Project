@@ -10,7 +10,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "app"))
 
 import app as employee_app
-import app.auth as auth_module
+import auth as auth_module
 
 
 @pytest.fixture
