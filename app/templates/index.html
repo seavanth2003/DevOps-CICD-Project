@@ -561,36 +561,36 @@
 
 
 <!-- DEPARTMENT CHART SCRIPT -->
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<script id="department-data" type="application/json">
+    {{ department_stats | tojson }}
+</script>
+
 <script>
-    const departmentData = department_stats | tojson ;
+    const departmentData = JSON.parse(
+        document.getElementById("department-data").textContent
+    );
 
     const chartElement = document.getElementById("departmentChart");
 
     if (chartElement && departmentData.length > 0) {
 
-        const departmentLabels = departmentData.map(item => item.department);
-        const departmentCounts = departmentData.map(item => item.employee_count);
-
         new Chart(chartElement, {
             type: "doughnut",
-
             data: {
-                labels: departmentLabels,
-
+                labels: departmentData.map(item => item.department),
                 datasets: [{
                     label: "Employees",
-                    data: departmentCounts,
+                    data: departmentData.map(item => item.employee_count),
                     borderWidth: 3,
                     hoverOffset: 10
                 }]
             },
-
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-
                 plugins: {
                     legend: {
                         position: "bottom"
@@ -600,6 +600,5 @@
         });
     }
 </script>
-
 </body>
 </html>

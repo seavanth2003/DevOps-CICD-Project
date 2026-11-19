@@ -139,6 +139,11 @@ def index():
             """
         ).fetchall()
 
+        # Convert SQLite Row objects into dictionaries for JSON
+        department_stats = [
+            dict(row) for row in department_stats
+        ]
+
         # Recent employees
         recent_employees = connection.execute(
             """
