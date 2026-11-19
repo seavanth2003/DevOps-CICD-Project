@@ -9,8 +9,8 @@ from werkzeug.security import generate_password_hash
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PROJECT_ROOT / "app"))
 
-import app as employee_app
-import auth as auth_module
+import app as employee_app  # noqa: E402
+import auth as auth_module  # noqa: E402
 
 
 @pytest.fixture
